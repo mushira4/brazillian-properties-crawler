@@ -1,6 +1,7 @@
 var Spider = require('node-spider');
 var logger = require('winston');
 
+// Instantiate web crawler
 var spider = new Spider({
 
   headers: { 'user-agent': 'node-spider' },
@@ -12,9 +13,6 @@ var spider = new Spider({
   done: function(){}
 
 });
-
-// it returns the url to the property.
-// http://www.zapimoveis.com.br/FichaImovel/BuscaPorZapID?zapID=IM19191130&_=1465715579553.
 
 var propertiesId = [
   '68837402',
@@ -37,5 +35,4 @@ var vivarealFindById = 'http://www.vivareal.com.br/inmueble/find-by-id.htm?id=';
 propertiesId.forEach(function(value){
   spider.queue(vivarealFindById + value, handleRequest);
 });
-
 
